@@ -8,6 +8,11 @@ const defaultChartValueStyle = TextStyle(
 
 const defaultLegendStyle = TextStyle(
   fontSize: 12,
+);
+
+
+const defaultLegendSubtitleStyle = TextStyle(
+  fontSize: 16,
   fontWeight: FontWeight.bold,
 );
 
