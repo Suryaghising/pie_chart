@@ -15,6 +15,8 @@ class PieChart extends StatefulWidget {
     this.chartType = ChartType.disc,
     this.chartRadius,
     this.animationDuration,
+    this.prefixWidget,
+    this.prefixText,
     this.chartLegendSpacing = 48,
     this.colorList = defaultColorList,
     this.initialAngleInDegree,
@@ -48,6 +50,8 @@ class PieChart extends StatefulWidget {
   final TextStyle? centerTextStyle;
   final double ringStrokeWidth;
   final LegendOptions legendOptions;
+  final String? prefixText;
+  final Widget? prefixWidget;
   final ChartValuesOptions chartValuesOptions;
   final Color emptyColor;
   final List<Color> emptyColorGradient;
@@ -198,7 +202,7 @@ class _PieChartState extends State<PieChart>
                 right: widget.chartLegendSpacing,
               ),
             ),
-            _getChart(),
+            Expanded(child: _getChart(),),
           ],
         );
       case LegendPosition.right:
@@ -217,7 +221,8 @@ class _PieChartState extends State<PieChart>
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            _getChart(),
+            Expanded(child: _getChart(),),
+            SizedBox(width: 20,),
             _getLegend(
               padding: EdgeInsets.only(
                 left: widget.chartLegendSpacing,
@@ -245,6 +250,10 @@ class _PieChartState extends State<PieChart>
               .map(
                 (item) => Legend(
                   title: item,
+                  prefixWidget: widget.prefixWidget,
+                  prefixText: widget.prefixText,
+                  subtitleStyle: widget.legendOptions.legendSubtitleStyle,
+                  value: (legendValues![legendTitles!.indexOf(item)]).toString(),
                   color: isGradientPresent
                       ? getGradient(
                           widget.gradientList!, legendTitles!.indexOf(item),
