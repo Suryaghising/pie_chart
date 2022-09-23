@@ -5,6 +5,7 @@ class LegendOptions {
   final bool showLegends;
   final bool showLegendsInRow;
   final TextStyle legendTextStyle;
+  final TextStyle legendSubtitleStyle;
   final BoxShape legendShape;
   final LegendPosition legendPosition;
   final Map<String,String> legendLabels;
@@ -13,6 +14,7 @@ class LegendOptions {
     this.showLegends = true,
     this.showLegendsInRow = false,
     this.legendTextStyle = defaultLegendStyle,
+    this.legendSubtitleStyle = defaultLegendSubtitleStyle,
     this.legendShape = BoxShape.circle,
     this.legendPosition = LegendPosition.right,
     this.legendLabels = const {},
